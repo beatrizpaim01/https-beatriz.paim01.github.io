@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Noite Intensa - Perfumaria Vênus</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background-color: #fff0f6; color: #333; }
+    .topbar { background-color: #ff80ab; color: white; padding: 10px; text-align: center; }
+    .navbar { display: flex; justify-content: center; background-color: #add8e6; padding: 10px 0; }
+    .navbar a { color: #333; text-decoration: none; padding: 10px 20px; font-weight: bold; }
+    .navbar a:hover { background-color: #d0eaff; border-radius: 8px; }
+    .produto { max-width: 800px; margin: 40px auto; text-align: center; background-color: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); }
+    .produto img { max-width: 300px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); }
+    button { margin: 10px; padding: 10px 20px; border: none; background-color: #ff80ab; color: white; font-size: 16px; border-radius: 8px; cursor: pointer; }
+    button:hover { background-color: #f06292; }
+  </style>
+</head>
+<body>
+  <div class="topbar"><strong>Perfumaria Vênus - Elegância em cada fragrância</strong></div>
+  <div class="navbar">
+    <a href="intex.html">Início</a>
+    <a href="produtos.html">Produtos</a>
+    <a href="carrinho.html">Carrinho</a>
+    <a href="entrar.html">Login</a>
+  </div>
+
+  <div class="produto">
+    <h1>Noite Intensa</h1>
+    <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQCiiL7HQTuAohpVntzHJQyIsFzCFvFuszrdkBJHHAf3rFoQ_Bs84j_8hexpIhW0DGy1Qrz978-fKcYyuKmbziYCWMJkTHmNZb7QiOEBaecXb35NlLJgatv" alt="Noite Intensa" />
+    <p>Preço: R$ 149,90</p>
+
+    <button onclick="comprarOuAdicionar('comprar')">Comprar agora</button>
+    <button onclick="comprarOuAdicionar('carrinho')">Adicionar ao carrinho</button>
+  </div>
+
+  <script>
+    const usuarioLogado = localStorage.getItem("usuarioLogado") === "true";
+    function comprarOuAdicionar(acao) {
+      if (!usuarioLogado) {
+        alert("Você precisa estar logado para realizar essa ação.");
+        return;
+      }
+      const produto = { nome: "Noite Intensa", imagem: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQCiiL7HQTuAohpVntzHJQyIsFzCFvFuszrdkBJHHAf3rFoQ_Bs84j_8hexpIhW0DGy1Qrz978-fKcYyuKmbziYCWMJkTHmNZb7QiOEBaecXb35NlLJgatv", preco: "R$ 149,90" };
+      localStorage.setItem("produtoSelecionado", JSON.stringify(produto));
+      window.location.href = "carrinho.html";
+    }
+  </script>
+</body>
+</html>

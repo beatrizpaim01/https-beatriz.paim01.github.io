@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Seja um Franqueado - Perfumaria Vênus</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fff0f6;
+      color: #333;
+    }
+    .topbar {
+      background-color: #ff80ab;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+    .navbar {
+      display: flex;
+      justify-content: center;
+      background-color: #add8e6;
+      padding: 10px 0;
+    }
+    .navbar a {
+      color: #333;
+      text-decoration: none;
+      padding: 10px 20px;
+      font-weight: bold;
+    }
+    .navbar a:hover {
+      background-color: #d0eaff;
+      border-radius: 8px;
+    }
+    .conteudo {
+      max-width: 900px;
+      margin: 40px auto;
+      background-color: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #ff4081;
+    }
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 30px;
+    }
+    label {
+      font-weight: bold;
+    }
+    input, textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    button {
+      padding: 12px;
+      font-size: 18px;
+      background-color: #ff80ab;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #f06292;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar"><strong>Perfumaria Vênus - Elegância em cada fragrância</strong></div>
+
+  <div class="navbar">
+    <a href="intex.html">Início</a>
+    <a href="produtos.html">Produtos</a>
+    <a href="carrinho.html">Carrinho</a>
+    <a href="entrar.html">Login</a>
+    <a href="sejafranqueado.html">Seja Franqueado</a>
+  </div>
+
+  <div class="conteudo">
+    <h1>Seja um Franqueado</h1>
+    <p>
+      A Perfumaria Vênus está em expansão e você pode fazer parte deste sucesso! Preencha o formulário abaixo e entraremos em contato com você.
+    </p>
+
+    <form onsubmit="enviarFormulario(event)">
+      <label for="nome">Nome Completo</label>
+      <input type="text" id="nome" name="nome" required>
+
+      <label for="email">E-mail</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="telefone">Telefone</label>
+      <input type="tel" id="telefone" name="telefone" required>
+
+      <label for="cidade">Cidade/Estado</label>
+      <input type="text" id="cidade" name="cidade" required>
+
+      <label for="mensagem">Por que deseja ser um franqueado?</label>
+      <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+
+      <button type="submit">Enviar Interesse</button>
+    </form>
+  </div>
+
+  <script>
+    function enviarFormulario(event) {
+      event.preventDefault();
+      alert("Obrigado! Sua solicitação foi enviada com sucesso.");
+      event.target.reset();
+    }
+  </script>
+
+</body>
+</html>

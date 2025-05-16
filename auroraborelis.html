@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Aurora Borealis - Perfumaria Vênus</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fff0f6;
+      color: #333;
+    }
+
+    /* Topbar */
+    .topbar {
+      background-color: #ff80ab;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: center;
+      background-color: #add8e6;
+      padding: 10px 0;
+    }
+
+    .navbar a {
+      color: #333;
+      text-decoration: none;
+      padding: 10px 20px;
+      font-weight: bold;
+    }
+
+    .navbar a:hover {
+      background-color: #d0eaff;
+      border-radius: 8px;
+    }
+
+    /* Produto */
+    .produto {
+      max-width: 800px;
+      margin: 40px auto;
+      text-align: center;
+      background-color: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .produto img {
+      max-width: 300px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      border: none;
+      background-color: #ff80ab;
+      color: white;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #f06292;
+    }
+  </style>
+</head>
+<body>
+  <!-- Topbar -->
+  <div class="topbar">
+    <strong>Perfumaria Vênus - Elegância em cada fragrância</strong>
+  </div>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <a href="intex.html">Início</a>
+    <a href="produtos.html">Produtos</a>
+    <a href="carrinho.html">Carrinho</a>
+    <a href="entrar.html">Login</a>
+  </div>
+
+  <!-- Produto -->
+  <div class="produto">
+    <h1>Aurora Borealis</h1>
+    <img src="https://francegallery.me/wp-content/uploads/2024/02/ISSEY-MIYAKE-NUIT-DISSEY-BOIS-ARCTIC-WALL.png" alt="Aurora Borealis" />
+    <p>Preço: R$ 279,90</p>
+
+    <button onclick="comprarOuAdicionar('comprar')">Comprar agora</button>
+    <button onclick="comprarOuAdicionar('carrinho')">Adicionar ao carrinho</button>
+  </div>
+
+  <script>
+    const usuarioLogado = localStorage.getItem("usuarioLogado") === "true";
+
+    function comprarOuAdicionar(acao) {
+      if (!usuarioLogado) {
+        alert("Você precisa estar logado para realizar essa ação.");
+        return;
+      }
+
+      const produto = {
+        nome: "Aurora Borealis",
+        imagem: "https://francegallery.me/wp-content/uploads/2024/02/ISSEY-MIYAKE-NUIT-DISSEY-BOIS-ARCTIC-WALL.png",
+        preco: "R$ 279,90"
+      };
+
+      localStorage.setItem("produtoSelecionado", JSON.stringify(produto));
+      window.location.href = "carrinho.html";
+    }
+  </script>
+</body>
+</html>

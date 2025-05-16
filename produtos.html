@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produtos | Perfumaria Vênus</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --rosa: #f8bbd0;
+      --azul: #b3e5fc;
+      --cinza: #333;
+      --branco: #fff;
+      --rosa-claro: #fce4ec;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--branco);
+      color: var(--cinza);
+    }
+
+    .top-bar {
+      background: var(--rosa);
+      color: var(--cinza);
+      padding: 0.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+    }
+
+    .top-bar a {
+      color: var(--cinza);
+      margin-left: 1rem;
+      text-decoration: none;
+    }
+
+    .navbar {
+      background: var(--branco);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ccc;
+      flex-wrap: wrap;
+    }
+
+    .navbar .logo {
+      font-size: 1.8rem;
+      color: var(--cinza);
+      font-weight: bold;
+      margin-right: auto;
+    }
+
+    .navbar nav {
+      display: flex;
+      justify-content: center;
+      flex-grow: 1;
+    }
+
+    .navbar nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: var(--cinza);
+    }
+
+    .filters {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      flex-wrap: wrap;
+    }
+
+    .filters input,
+    .filters select {
+      padding: 0.5rem;
+      margin: 0.5rem;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    .product {
+      border: 1px solid #ddd;
+      padding: 1rem;
+      text-align: center;
+      transition: box-shadow 0.3s;
+    }
+
+    .product:hover {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .product img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transform: scale(1);
+    }
+
+    .product:hover img {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    footer {
+      background: var(--cinza);
+      color: var(--branco);
+      padding: 2rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top-bar">
+  <div>Tel: (11) 1234-5678 | contato@perfumariavenus.com</div>
+  <div>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="entrar.html" style="margin-left: 1rem;">Entrar</a>
+    <a href="cadastrar.html" style="margin-left: 0.5rem;">Cadastrar-se</a>
+  </div>
+</div>
+  <div class="navbar">
+    <div class="logo">PV</div>
+    <nav>
+          <a href="intex.html">Início</a>
+          <a href="historia.html">História</a>
+          <a href="ondecomprar.html">Onde Comprar</a>
+          <a href="produtos.html">Produtos</a>
+        </nav>
+      </div>
+      <div class="actions">
+        <i class="fas fa-search" onclick="toggleSearch()"></i>
+        <a href="carrinho.html"><i class="fas fa-shopping-cart"></i></a>
+        
+      </div>
+      
+    </nav>
+  </div>
+
+  <div class="filters">
+    <input type="text" id="searchInput" placeholder="Buscar produtos...">
+    <select id="categoryFilter">
+      <option value="todos">Todos</option>
+      <option value="masculino">Masculino</option>
+      <option value="feminino">Feminino</option>
+      <option value="unissex">Unissex</option>
+    </select>
+    <select id="sortSelect">
+      <option value="default">Ordenar por</option>
+      <option value="priceAsc">Preço: menor para maior</option>
+      <option value="priceDesc">Preço: maior para menor</option>
+    </select>
+  </div>
+
+  <div class="product-grid" id="productGrid">
+    <!-- Produtos inseridos via script -->
+  </div>
+
+  <footer>
+    &copy; 2025 Perfumaria Vênus. Todos os direitos reservados.
+  </footer>
+
+  <script>
+    const products = [
+      { name: 'Encanto Floral', price: 129.90, category: 'feminino', img: 'https://a-static.mlcdn.com.br/1500x1500/deo-colonia-florasense-rose-25ml-jequiti/oreidoscatalogos/99019553/1d8deac01036977ea647d7b5c7830685.jpeg', link: 'encantofloral.html' },
+      { name: 'Noite Intensa', price: 149.90, category: 'masculino', img: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQCiiL7HQTuAohpVntzHJQyIsFzCFvFuszrdkBJHHAf3rFoQ_Bs84j_8hexpIhW0DGy1Qrz978-fKcYyuKmbziYCWMJkTHmNZb7QiOEBaecXb35NlLJgatv', link: 'noiteintesa.html' },
+      { name: 'Aurora', price: 109.90, category: 'feminino', img: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcT-p3vpeaIDSAkc0cJgY20BBu_Rf7dcpvx4ww24aFWyMdouJMI-zoqyIlPFNPxUblNk2fCEociBkcuFQXSC12xWWmc79yxY2rXz-ehhRjQTkKMaklDrTc-grQ', link: 'aurora.html' },
+      { name: 'Elegance', price: 169.90, category: 'unissex', img: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTHlnSqr1wsCXJ2fMwDZsYr_IR28A0-bhWEsBLJNrDqkbd7Gn2fqrjmX35Dr8esNSaO76Ucr-DutNw2nW4f9D1sJBpojdzPk8PSJjkM2xp0judX1BPzMAUxFQ', link: 'elegance.html' },
+      { name: 'Terra verde', price: 139.90, category: 'masculino', img: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcS0b7uKVcSu2PJjLkbbqWYXeEUDbRVUAPEqOfdtCL6efE253UJy-vl0Itlwca7fwLk-U8V97OQL-96RnNH2um6BKjEleucKXGXzZ80EBxw_Okyx4iP_qdpy', link: 'terraverde.html' },
+      { name: 'Oceano', price: 119.90, category: 'unissex', img: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQCqFP2XLOugoFO2yc6dcpv1FPLqK3i7D1mh_z5PYVbTTM3aUVB5O84aoc14BEN9V8-3UP3zrdG9-S1MIhJ1F5voC3abEnHPAckjM9uK1XQeHW3cmUw9rL7_g', link: 'oceano.html' },
+      { name: 'Venus Rosé', price: 146.90, category: 'feminino', img: 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQVdCnMpWkJ2KEZztKPCpo1V7xniJDCPDBFzq-9DWNjGZPCIgkaIiHwYE5E4UG3JI47hMbhMjiKiNhhfGZNyNfB632_MwqPGA2VaQeQMfx4EmMRgH8s-JnjEuhn', link: 'venusrose.html' },
+      { name: 'Noite Azul', price: 189.00, category: 'masculino', img: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSf4-9HKGSLGZi9ijFpMxiuI9tDnxP24wwFgssG7ALxfyJU1UO0SqcQfNNEkx1TSDbDsF4g908wEXamDqk1frDUIM5fTKPa5igZiPrCYNNhoZLd9ypgUxai', link: 'noiteazul.html' },
+      { name: 'Brisa Da Manhã', price: 135.50, category: 'unissex', img: 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRj-1T-6kjWWoERJBB45BTDpDIoE2YO5LQd3O_ZrBTLMLBi--SmJs31hTHCibj0bRzc10qotcE7SLcSjUt8W8e1qc7kWAC5bvKFNK7QTxVRGZYfOaHnGpIk7l0', link: 'brisadamanha.html' },
+    ];
+
+    function renderProducts(productArray) {
+      const grid = document.getElementById('productGrid');
+      grid.innerHTML = '';
+      productArray.forEach(prod => {
+        const el = document.createElement('div');
+        el.className = 'product';
+        el.setAttribute('data-category', prod.category);
+        el.setAttribute('data-price', prod.price);
+        el.innerHTML = `
+          <a href="${prod.link}">
+            <img src="${prod.img}" alt="${prod.name}">
+          </a>
+          <h3>${prod.name}</h3>
+          <p>R$ ${prod.price.toFixed(2)}</p>
+        `;
+        grid.appendChild(el);
+      });
+    }
+
+    function applyFilters() {
+      let filtered = [...products];
+      const search = document.getElementById('searchInput').value.toLowerCase();
+      const category = document.getElementById('categoryFilter').value;
+      const sort = document.getElementById('sortSelect').value;
+
+      if (search) {
+        filtered = filtered.filter(p => p.name.toLowerCase().includes(search));
+      }
+      if (category !== 'todos') {
+        filtered = filtered.filter(p => p.category === category);
+      }
+      if (sort === 'priceAsc') {
+        filtered.sort((a, b) => a.price - b.price);
+      } else if (sort === 'priceDesc') {
+        filtered.sort((a, b) => b.price - a.price);
+      }
+
+      renderProducts(filtered);
+    }
+
+    document.getElementById('searchInput').addEventListener('input', applyFilters);
+    document.getElementById('categoryFilter').addEventListener('change', applyFilters);
+    document.getElementById('sortSelect').addEventListener('change', applyFilters);
+
+    renderProducts(products);
+  </script>
+</body>
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perfumaria Vênus</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rosa-claro: #fce4ec;
+      --rosa: #f8bbd0;
+      --azul: #b3e5fc;
+      --cinza: #333;
+      --branco: #fff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--branco);
+      color: var(--cinza);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+    }
+
+    .top-bar {
+      background: var(--rosa);
+      color: var(--cinza);
+      padding: 0.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+
+    .top-bar a {
+      margin-left: 1rem;
+      color: var(--cinza);
+    }
+
+    .navbar {
+      background: var(--branco);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .navbar .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--cinza);
+      border: 2px solid var(--rosa);
+      border-radius: 50%;
+      padding: 0.5rem 1.2rem;
+      letter-spacing: 2px;
+    }
+
+    .navbar nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: var(--cinza);
+    }
+
+    .navbar .actions {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar .actions i,
+    .navbar .actions a,
+    .navbar .actions button {
+      margin-left: 1rem;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .navbar .actions button {
+      background: var(--rosa);
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    .navbar .actions button:hover {
+      background: var(--cinza);
+      color: var(--branco);
+    }
+
+    .search-box {
+      display: none;
+      position: absolute;
+      top: 70px;
+      right: 2rem;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 0.5rem;
+      z-index: 5;
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      padding: 0.3rem 0.5rem;
+      width: 200px;
+    }
+
+    .hero {
+      background: url('https://nxboats.com.br/wp-content/uploads/2024/05/perfumes-de-luxo-masculinos.jpg') no-repeat center center/cover;
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--branco);
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+    }
+
+    .hero a {
+      background: var(--rosa);
+      color: var(--cinza);
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 1rem;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .hero a:hover {
+      background: var(--cinza);
+      color: var(--branco);
+    }
+
+    .linha-nova {
+      padding: 4rem 2rem;
+      text-align: center;
+      background: var(--rosa-claro);
+    }
+
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      max-width: 660px;
+      margin: 2rem auto;
+      overflow: hidden;
+    }
+
+    .carousel {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .carousel a img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-right: 10px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .carousel a:hover img {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .carousel-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--rosa);
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      font-size: 1.5rem;
+      z-index: 2;
+    }
+
+    .carousel-button.left {
+      left: 0;
+    }
+
+    .carousel-button.right {
+      right: 0;
+    }
+
+    .cta-section {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: var(--azul);
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-section a {
+      background: var(--cinza);
+      color: var(--branco);
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 1rem;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .cta-section a:hover {
+      background: var(--rosa);
+      color: var(--cinza);
+    }
+
+    footer {
+      background: var(--cinza);
+      color: var(--branco);
+      padding: 3rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      row-gap: 2rem;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 200px;
+      padding: 0 1rem;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .footer-menu a {
+      color: var(--branco);
+      text-decoration: none;
+    }
+
+    .footer-franquia a {
+      color: var(--rosa);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top-bar">
+    <div>
+      Tel: (11) 1234-5678 | Email: contato@perfumariavenus.com
+    </div>
+    <div>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+       <a href="entrar.html" style="margin-left: 1rem;">Entrar</a>
+      <a href="cadastrar.html" style="margin-left: 0.5rem;">Cadastrar-se</a>
+    </div>
+  </div>
+
+  <div class="navbar">
+    <div class="logo">PV</div>
+    <nav>
+      <a href="intex.html">Início</a>
+      <a href="historia.html">História</a>
+      <a href="ondecomprar.html">Onde Comprar</a>
+      <a href="produtos.html">Produtos</a>
+    </nav>
+    <div class="actions">
+      <i class="fas fa-search" onclick="toggleSearch()"></i>
+      <a href="carrinho.html"><i class="fas fa-shopping-cart"></i></a>
+      
+    </div>
+  </div>
+
+  <div class="search-box" id="searchBox">
+    <input type="text" id="searchInput" placeholder="Buscar..." onkeydown="handleSearch(event)">
+  </div>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Descubra seu aroma ideal</h1>
+      <a href="produtos.html">Compre Agora</a>
+    </div>
+  </section>
+
+  <section class="linha-nova">
+    <h2>Linha Aurora</h2>
+    <p>Uma coleção de fragrâncias sofisticadas para todos os momentos — do romance à liberdade urbana.</p>
+    <div class="carousel-container">
+      <button class="carousel-button left" onclick="scrollCarousel(-1)">&#10094;</button>
+      <div class="carousel" id="carousel">
+        <a href="aurabeauty.html"><img src="https://http2.mlstatic.com/D_Q_NP_790449-MLA80847664053_112024-O.webp" alt="Aura Beauty"></a>
+        <a href="elixir.html"><img src="https://http2.mlstatic.com/D_NQ_NP_2X_758622-MLA83764816419_042025-O.webp" alt="Elixir"></a>
+        <a href="auroraborelis.html"><img src="https://francegallery.me/wp-content/uploads/2024/02/ISSEY-MIYAKE-NUIT-DISSEY-BOIS-ARCTIC-WALL.png" alt="Aurora Borealis"></a>
+        <a href="dancingnoite.html"><img src="https://www.olfactivestudio.com/cdn/shop/products/DancingLightSquare_LD_39d02aa0-c8cd-4182-8b8a-3b72b5ad24c5.jpg?v=1648050763&width=1500" alt="Dancing Light"></a>
+        <a href="dosita.html"><img src="https://fimgs.net/himg/o.squpBmFMeOo.jpg" alt="Dusita Rosarine"></a>
+        <a href="taste.html"><img src="https://brbrand.com.br/wp-content/uploads/2023/08/TASTE-OF-KISS-LA-RIVE-3.png" alt="Taste of Kiss"></a>
+      </div>
+      <button class="carousel-button right" onclick="scrollCarousel(1)">&#10095;</button>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2>Transforme seu dia com um novo perfume</h2>
+    <a href="#">Compre Agora</a>
+  </section>
+
+  <footer>
+    <div class="footer-column">
+      <div class="footer-logo">Perfumaria Vênus</div>
+      <p>Rua das Rosas, 123 - São Paulo, SP</p>
+    </div>
+    <div class="footer-column">
+      <div class="footer-menu">
+        <a href="intex.html">Início</a>
+        <a href="historia.html">História</a>
+        <a href="ondecomprar.html">Onde Comprar</a>
+        <a href="produtos.html">Produtos</a>
+      </div>
+    </div>
+    <div class="footer-column footer-franquia">
+      <a href="sejafranqueado.html">Seja Franqueado</a>
+    </div>
+  </footer>
+
+  <script>
+    const carousel = document.getElementById('carousel');
+    let scrollIndex = 0;
+
+    function scrollCarousel(direction) {
+      const items = carousel.querySelectorAll('a');
+      const itemWidth = items[0].offsetWidth + 10;
+      scrollIndex += direction;
+
+      if (scrollIndex < 0) {
+        scrollIndex = items.length - 3;
+      } else if (scrollIndex > items.length - 3) {
+        scrollIndex = 0;
+      }
+
+      carousel.style.transform = `translateX(-${scrollIndex * itemWidth}px)`;
+    }
+
+    function toggleSearch() {
+      const searchBox = document.getElementById("searchBox");
+      searchBox.style.display = searchBox.style.display === "block" ? "none" : "block";
+    }
+
+    function handleSearch(event) {
+      if (event.key === "Enter") {
+        const query = document.getElementById("searchInput").value;
+        window.location.href = `buscar.html?query=${encodeURIComponent(query)}`;
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Onde Comprar | Perfumaria Vênus</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rosa-claro: #fce4ec;
+      --rosa: #f8bbd0;
+      --azul: #b3e5fc;
+      --cinza: #333;
+      --branco: #fff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--branco);
+      color: var(--cinza);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .top-bar {
+      background: var(--rosa);
+      color: var(--cinza);
+      padding: 0.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+
+    .top-bar a {
+      margin-left: 1rem;
+      color: var(--cinza);
+    }
+
+    .navbar {
+      background: var(--branco);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+
+    .navbar .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--cinza);
+      border: 2px solid var(--rosa);
+      border-radius: 50%;
+      padding: 0.5rem 1.2rem;
+      letter-spacing: 2px;
+    }
+
+    .navbar nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: var(--cinza);
+    }
+
+    .navbar .actions {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar .actions i,
+    .navbar .actions button {
+      margin-left: 1rem;
+      cursor: pointer;
+    }
+
+    .navbar .actions button {
+      background: var(--rosa);
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    .navbar .actions button:hover {
+      background: var(--cinza);
+      color: var(--branco);
+    }
+
+    .search-box {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 2rem;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 0.5rem;
+      z-index: 10;
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      padding: 0.3rem 0.5rem;
+      width: 200px;
+    }
+
+    .lojas-fisicas {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin: 2rem auto;
+      max-width: 900px;
+      padding: 0 1rem;
+    }
+
+    .loja {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      background: var(--rosa-claro);
+      padding: 1rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s ease;
+    }
+
+    .loja:hover {
+      transform: scale(1.02);
+    }
+
+    .loja img {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .loja-info span {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #444;
+    }
+
+    @media (max-width: 600px) {
+      .loja {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .loja img {
+        width: 100%;
+        height: auto;
+        max-width: 300px;
+      }
+    }
+
+    footer {
+      background: var(--cinza);
+      color: var(--branco);
+      padding: 3rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      row-gap: 2rem;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 200px;
+      padding: 0 1rem;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .footer-menu a {
+      color: var(--branco);
+      text-decoration: none;
+    }
+
+    .footer-franquia a {
+      color: var(--rosa);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top-bar">
+  <div>Tel: (11) 1234-5678 | contato@perfumariavenus.com</div>
+  <div>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="entrar.html" style="margin-left: 1rem;">Entrar</a>
+    <a href="cadastrar.html" style="margin-left: 0.5rem;">Cadastrar-se</a>
+  </div>
+</div>
+
+  <div class="navbar">
+    <div class="logo">PV</div>
+    <nav>
+      <a href="intex.html">Início</a>
+      <a href="historia.html">História</a>
+      <a href="ondecomprar.html">Onde Comprar</a>
+      <a href="produtos.html">Produtos</a>
+    </nav>
+    <div class="actions">
+      <i class="fas fa-search" onclick="toggleSearch()"></i>
+      <a href="carrinho.html"><i class="fas fa-shopping-cart"></i></a>
+      
+    </div>
+    <div class="search-box" id="searchBox">
+      <input type="text" id="searchInput" placeholder="Buscar..." onkeydown="handleSearch(event)">
+    </div>
+  </div>
+
+  <h1>Onde Comprar</h1>
+  <h2>Lojas Físicas</h2>
+  <div class="lojas-fisicas">
+    <div class="loja">
+      <img src="https://apt-mailing.s3.amazonaws.com/CAROL%20ROMANINI/Opaque.jpg" alt="Loja em São Paulo">
+      <div class="loja-info"><span>São Paulo – Shopping Eldorado</span></div>
+    </div>
+    <div class="loja">
+      <img src="https://assets.multiplan.com.br/Multiplan/filer_public/5c/45/5c4561ed-bbf1-46c3-aad6-59857fe238dd/img_9628.jpg?ims=x800" alt="Loja no Rio de Janeiro">
+      <div class="loja-info"><span>Rio de Janeiro – BarraShopping</span></div>
+    </div>
+    <div class="loja">
+      <img src="https://diariodonordeste.verdesmares.com.br/image/contentid/policy:1.3122232:1628801804/image.jpg?h=630&q=0.6&w=1200&$p$h$q$w=f76cc5e" alt="Loja em Campinas">
+      <div class="loja-info"><span>Campinas – Shopping Iguatemi</span></div>
+    </div>
+    <div class="loja">
+      <img src="https://gvshopping.com.br/wp-content/uploads/2022/12/WhatsApp-Image-2022-12-23-at-14.43.05.jpeg" alt="Loja em Recife">
+      <div class="loja-info"><span>Recife – Shopping Recife</span></div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-column">
+      <div class="footer-logo">Perfumaria Vênus</div>
+      <p>Rua das Rosas, 123 - São Paulo, SP</p>
+    </div>
+    <div class="footer-column">
+      <div class="footer-menu">
+        <a href="index.html">Início</a>
+        <a href="historia.html">História</a>
+        <a href="onde-comprar.html">Onde Comprar</a>
+        <a href="produtos.html">Produtos</a>
+      </div>
+    </div>
+    <div class="footer-column footer-franquia">
+      <a href="sejafranqueado.html">Seja Franqueado</a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleSearch() {
+      const searchBox = document.getElementById("searchBox");
+      searchBox.style.display = searchBox.style.display === "block" ? "none" : "block";
+    }
+
+    function handleSearch(event) {
+      if (event.key === "Enter") {
+        const query = document.getElementById("searchInput").value;
+        window.location.href = `buscar.html?query=${encodeURIComponent(query)}`;
+      }
+    }
+  </script>
+</body>
+
+</html>
